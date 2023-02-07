@@ -13,6 +13,10 @@ function App() {
       .then(data => setPets(data))
   }, [])
 
+  const filteredPets = pets.filter(pet => {
+    return pet.type === filters.type || filters.type === 'all'
+  })
+
   return (
     <div className="ui container">
       <header>
@@ -26,7 +30,7 @@ function App() {
           </div>
           <div className="twelve wide column">
             <PetBrowser
-              pets={pets} />
+              pets={filteredPets} />
           </div>
         </div>
       </div>
